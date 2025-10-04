@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minchu Kulkarni</title>
   <link href="home-css.css" rel="stylesheet" type="text/css">
   <link href="favicon.ico" rel="icon" type="image/ico">
@@ -89,6 +90,38 @@
     </div>
 
   </div>
+
+  <!-- Flower emojis at the bottom -->
+  <div id="flowerContainer"></div>
+
+  <script>
+    // Array of flower emojis
+    const flowers = ['🌸', '🌺', '🌼', '🏵️'];
+    
+    // Adjust number of flowers based on screen width
+    const isMobile = window.innerWidth <= 600;
+    const baseFlowers = isMobile ? 25 : 60;
+    const randomRange = isMobile ? 10 : 21;
+    const numberOfFlowers = Math.floor(Math.random() * randomRange) + baseFlowers;
+    const container = document.getElementById('flowerContainer');
+    
+    for (let i = 0; i < numberOfFlowers; i++) {
+      const flower = document.createElement('span');
+      flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+      const flowerSize = isMobile ? Math.random() * 10 + 18 : Math.random() * 15 + 20;
+      flower.style.cssText = `
+        position: fixed;
+        bottom: ${Math.random() * 30}px;
+        left: ${Math.random() * 100}%;
+        font-size: ${flowerSize}px;
+        transform: rotate(${Math.random() * 360}deg);
+        opacity: ${Math.random() * 0.3 + 0.7};
+        pointer-events: none;
+        z-index: 1000;
+      `;
+      container.appendChild(flower);
+    }
+  </script>
 
 </body>
 

@@ -10,8 +10,8 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
     text-transform: lowercase;
 }
 
@@ -152,14 +152,20 @@ a:hover {
 
 /* Responsive */
 @media (max-width: 900px) {
+    body {
+        overflow-y: auto;
+    }
+
     #container {
         flex-direction: column;
+        height: auto;
     }
     
     #leftPanel {
         position: relative;
         width: 100%;
         max-width: 100%;
+        left: 0;
         height: auto;
         padding: 40px 30px;
     }
@@ -169,5 +175,41 @@ a:hover {
         width: 100%;
         height: auto;
         padding: 40px 30px;
+        overflow-y: visible;
+    }
+}
+
+@media (max-width: 600px) {
+    #leftPanel {
+        padding: 30px 20px;
+    }
+
+    #rightPanel {
+        padding: 30px 20px;
+    }
+
+    .myName {
+        font-size: 20px;
+    }
+
+    .bioText {
+        font-size: 13px;
+    }
+
+    .itemTitle {
+        font-size: 16px;
+    }
+
+    .itemDescription {
+        font-size: 14px;
+    }
+
+    .item {
+        margin-bottom: 30px;
+    }
+
+    #myImage {
+        width: 120px;
+        height: 120px;
     }
 }
