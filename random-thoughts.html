@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minchu Kulkarni</title>
+  <title>Random Thoughts - Minchu Kulkarni</title>
   <link href="home-css.css" rel="stylesheet" type="text/css">
   <link href="favicon.ico" rel="icon" type="image/ico">
 </head>
@@ -72,28 +72,36 @@
         </a> -->
       </div>
 
-      <a href="random-thoughts.html" class="navButton" aria-label="Random Thoughts">
-        random thoughts
+      <a href="index.html" class="navButton" aria-label="Home">
+        home
       </a>
     </div>
 
     <div id="rightPanel">
       <div class="contentList">
 
-        <div class="aboutTitle">Hey there!</div>
+        <div class="aboutTitle">random thoughts</div>
 
         <div class="aboutItem">
-          I'm Minchu, a Founding Engineer at <a href="https://juicebox.ai" target="_blank">Juicebox</a>
+          in progress...
+        </div>
+
+        <!-- <div class="aboutItem">
+          the best ideas come when you're not trying to have them
         </div>
 
         <div class="aboutItem">
-          Previously worked at <a href="https://amuselabs.com" target="_blank">Amuse Labs</a> and researched at <a
-            href="https://makeabilitylab.cs.washington.edu/" target="_blank">University of Washington</a>.
+          what if consciousness is just the universe trying to understand itself?
         </div>
 
         <div class="aboutItem">
-          interested in AI, tech, films, hiking, and knowing myself
+          every person you meet is fighting a battle you know nothing about
         </div>
+
+        <div class="aboutItem">
+          maybe being lost is just another way of finding yourself
+        </div> -->
+
       </div>
     </div>
 
@@ -105,17 +113,17 @@
   <script>
     // Array of flower emojis
     const flowers = ['🌸', '🌺', '🌼', '🏵️'];
-
+    
     // Adjust number of flowers based on screen width
     const isMobile = window.innerWidth <= 600;
     const baseFlowers = isMobile ? 25 : 60;
     const randomRange = isMobile ? 10 : 21;
     const numberOfFlowers = Math.floor(Math.random() * randomRange) + baseFlowers;
     const container = document.getElementById('flowerContainer');
-
+    
     // Store flower data for accelerometer updates
     const flowerElements = [];
-
+    
     for (let i = 0; i < numberOfFlowers; i++) {
       const flower = document.createElement('span');
       flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
@@ -124,7 +132,7 @@
       const baseLeft = Math.random() * 100;
       const rotation = Math.random() * 360;
       const opacity = Math.random() * 0.3 + 0.7;
-
+      
       flower.style.cssText = `
         position: fixed;
         bottom: ${baseBottom}px;
@@ -136,9 +144,9 @@
         z-index: 1000;
         transition: transform 0.3s ease-out, left 0.3s ease-out, bottom 0.3s ease-out;
       `;
-
+      
       container.appendChild(flower);
-
+      
       // Store base position and element reference
       flowerElements.push({
         element: flower,
@@ -148,30 +156,30 @@
         sensitivity: Math.random() * 0.5 + 0.5 // Random sensitivity multiplier
       });
     }
-
+    
     // Handle device orientation for tilt effect
     const handleOrientation = (event) => {
       const gamma = event.gamma || 0; // Left to right tilt (-90 to 90)
       const beta = event.beta || 0;   // Front to back tilt (-180 to 180)
-
+      
       flowerElements.forEach((flowerData) => {
         const { element, baseBottom, baseLeft, rotation, sensitivity } = flowerData;
-
+        
         // Calculate movement based on tilt (scaled by sensitivity)
         const moveX = gamma * sensitivity * 0.3; // Horizontal movement
         const moveY = (beta - 90) * sensitivity * 0.1; // Vertical movement
-
+        
         // Update position
         const newLeft = Math.max(0, Math.min(100, baseLeft + moveX));
         const newBottom = Math.max(-20, Math.min(50, baseBottom + moveY));
         const newRotation = rotation + (gamma * 0.5);
-
+        
         element.style.left = `${newLeft}%`;
         element.style.bottom = `${newBottom}px`;
         element.style.transform = `rotate(${newRotation}deg)`;
       });
     };
-
+    
     // Request permission for iOS 13+ devices
     const requestMotionPermission = () => {
       if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
@@ -187,7 +195,7 @@
         window.addEventListener('deviceorientation', handleOrientation);
       }
     };
-
+    
     // Auto-start for Android and desktop, or wait for user interaction on iOS
     if (typeof DeviceOrientationEvent !== 'undefined') {
       if (typeof DeviceOrientationEvent.requestPermission === 'function') {
@@ -204,3 +212,4 @@
 </body>
 
 </html>
+
